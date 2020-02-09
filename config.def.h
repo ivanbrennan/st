@@ -479,13 +479,13 @@ static Key key[] = {
 	{ XK_F35,           XK_NO_MOD,      "\033[23;5~",    0,    0},
 
 	// custom
-	{ XK_Return,       ControlMask,                    "\033[13;5u",  0,  0},
-	{ XK_Return,       Mod1Mask|ShiftMask,             "\033[13;4u",  0,  0},
-	{ XK_Return,       ShiftMask,                      "\033[13;2u",  0,  0},
-	{ XK_space,        ControlMask|ShiftMask,          "\033[32;6u",  0,  0},
-	{ XK_space,        ShiftMask,                      "\033[32;2u",  0,  0},
-	{ XK_comma,        ControlMask,                    "\033[44;5u",  0,  0},
-	{ XK_period,       ControlMask,                    "\033[46;5u",  0,  0},
+	{ XK_Return,        ControlMask,    "\033[13;5u",    0,    0},
+	{ XK_Return,     ShiftMask|Mod1Mask,"\033[13;4u",    0,    0},
+	{ XK_Return,        ShiftMask,      "\033[13;2u",    0,    0},
+	{ XK_space,   ShiftMask|ControlMask,"\033[32;6u",    0,    0},
+	{ XK_space,         ShiftMask,      "\033[32;2u",    0,    0},
+	{ XK_comma,         ControlMask,    "\033[44;5u",    0,    0},
+	{ XK_period,        ControlMask,    "\033[46;5u",    0,    0},
 };
 
 /*
