@@ -2688,20 +2688,20 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
     
     
     if ( selectsearch_mode & 2 ) {
-		if ( ksym == XK_Return ) {
+		if ( ksym == XK_Return || ksym == XK_Escape ) {
 			selectsearch_mode ^= 2;
 			set_notifmode(selectsearch_mode, -2);
             if ( ksym == XK_Escape )    ptarget = 0;
 			return 0;
 		}
-        else if ( ksym == XK_0 ) {
+        else if ( ksym == XK_BackSpace ) {
             if ( !ptarget )     return 0;
             term.line[term.bot][ptarget--].u = ' ';
 		}
         else if ( len < 1 ) {
 			return 0;
 		}
-        else if ( ptarget == term.col  || ksym == XK_Escape || ksym == XK_q ) {
+        else if ( ptarget == term.col || ksym == XK_Escape ) {
             return 0;
         }
 		else {
