@@ -2747,11 +2747,15 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
     case XK_Escape :
         if ( !in_use )  break;
         selclear();
+    case XK_y :
     case XK_Return :
         set_notifmode(4, ksym);
         term.c.x = cu.x, term.c.y = cu.y;
         select_or_drawcursor(selectsearch_mode = 0, type);
         in_use = quant = 0;
+        xsetsel(getsel());
+        xclipcopy();
+        selclear();
         return MODE_KBDSELECT;
     case XK_n :
     case XK_N :
