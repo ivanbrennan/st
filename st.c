@@ -2694,14 +2694,14 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
             if ( ksym == XK_Escape )    ptarget = 0;
 			return 0;
 		}
-        else if ( ksym == XK_BackSpace ) {
+        else if ( ksym == XK_0 ) {
             if ( !ptarget )     return 0;
             term.line[term.bot][ptarget--].u = ' ';
 		}
         else if ( len < 1 ) {
 			return 0;
 		}
-        else if ( ptarget == term.col  || ksym == XK_Escape ) {
+        else if ( ptarget == term.col  || ksym == XK_Escape || ksym == XK_q ) {
             return 0;
         }
 		else {
@@ -2709,7 +2709,7 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
             term.line[term.bot][ptarget].u = target[ptarget - 1];
 		}
 
-        if ( ksym != XK_BackSpace )
+        if ( ksym != XK_0 )
             search(selectsearch_mode, &target[0], ptarget, sens, type, &cu);
 
         term.dirty[term.bot] = 1; 
@@ -2723,7 +2723,7 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         cu.x = term.c.x, cu.y = term.c.y;
         set_notifmode(0, ksym);
         return MODE_KBDSELECT;
-    case XK_s :
+    case XK_v :
         if ( selectsearch_mode & 1 )
             selclear();
         else
@@ -2743,6 +2743,7 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         set_notifmode(15, ksym);
         selectsearch_mode ^= 2;
         break;
+    case XK_q :
     case XK_Escape :
         if ( !in_use )  break;
         selclear();
@@ -2757,7 +2758,7 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         if ( ptarget )
             search(selectsearch_mode, &target[0], ptarget, (ksym == XK_n) ? -1 : 1, type, &cu);
         break;
-    case XK_BackSpace :
+    case XK_0 :
         term.c.x = 0;
         select_or_drawcursor(selectsearch_mode, type);
         break;
@@ -2778,17 +2779,8 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         term.c.y = (ksym == XK_Prior ) ? 0 : cu.y;
         select_or_drawcursor(selectsearch_mode, type);
         break;
-    case XK_exclam :
-        term.c.x = term.col >> 1;
-        select_or_drawcursor(selectsearch_mode, type);
-        break;
-    case XK_asterisk :
-    case XK_KP_Multiply :
-        term.c.x = term.col >> 1;
-    case XK_underscore :
+    case XK_M :
         term.c.y = cu.y >> 1;
-        select_or_drawcursor(selectsearch_mode, type);
-        break;
     default :
         if ( ksym >= XK_0 && ksym <= XK_9 ) {               /* 0-9 keyboard */
             quant = (quant * 10) + (ksym ^ XK_0);
