@@ -190,7 +190,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-    { TERMMOD,              XK_space,       keyboard_select,{ 0 } },
+    { ShiftMask|Mod1Mask,   XK_space,       keyboard_select,{ 0 } },
 };
 
 /*
@@ -482,7 +482,6 @@ static Key key[] = {
 	{ XK_Return,        ControlMask,    "\033[13;5u",    0,    0},
 	{ XK_Return,     ShiftMask|Mod1Mask,"\033[13;4u",    0,    0},
 	{ XK_Return,        ShiftMask,      "\033[13;2u",    0,    0},
-	{ XK_space,   ShiftMask|ControlMask,"\033[32;6u",    0,    0},
 	{ XK_space,         ShiftMask,      "\033[32;2u",    0,    0},
 	{ XK_comma,         ControlMask,    "\033[44;5u",    0,    0},
 	{ XK_period,        ControlMask,    "\033[46;5u",    0,    0},
