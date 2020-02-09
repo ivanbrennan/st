@@ -2770,9 +2770,9 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         term.c.x = term.col - 1;
         select_or_drawcursor(selectsearch_mode, type);
         break;
-    case XK_Page_Up :
-    case XK_Page_Down :
-        term.c.y = (ksym == XK_Prior ) ? 0 : cu.y;
+    case XK_H :
+    case XK_L :
+        term.c.x = 0, term.c.y = (ksym == XK_H ) ? 0 : cu.y;
         select_or_drawcursor(selectsearch_mode, type);
         break;
     case XK_M :
