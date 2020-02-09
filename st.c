@@ -2776,7 +2776,7 @@ int trt_kbdselect(KeySym ksym, char *buf, int len) {
         select_or_drawcursor(selectsearch_mode, type);
         break;
     case XK_M :
-        term.c.y = cu.y >> 1;
+        term.c.x = 0, term.c.y = cu.y >> 1;
     default :
         if ( ksym >= XK_0 && ksym <= XK_9 ) {               /* 0-9 keyboard */
             quant = (quant * 10) + (ksym ^ XK_0);
